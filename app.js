@@ -32,11 +32,12 @@ const authRouter = require('./routes/auth')
 const jobsRouter = require('./routes/jobs')
 
 // routes
-// app.use('/', (req, res) => {
-//   res.send('Jobs API')
-// })
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/jobs', jobsRouter);
+
+app.use('/', (req, res) => {
+  res.send('Jobs API')
+})
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
