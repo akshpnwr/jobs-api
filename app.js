@@ -39,6 +39,12 @@ const authRouter = require('./routes/auth')
 const jobsRouter = require('./routes/jobs')
 
 // routes
+app.use(express.static(__dirname));
+app.use('*.css', (req, res, next) => {
+  res.set('Content-Type', 'text/css');
+  next();
+});
+
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/jobs', jobsRouter);
 
