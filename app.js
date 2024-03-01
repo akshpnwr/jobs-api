@@ -48,7 +48,8 @@ app.use('*.css', (req, res, next) => {
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/jobs', jobsRouter);
 
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
+app.use('/api-docs', swaggerUI.serve)
+app.get('/api-docs', swaggerUI.setup(swaggerDocument, { customCssUrl: './docs.css' }));
 
 app.use('/', (req, res) => {
   res.send('<h1>Jobs API</h1><a href="/api-docs">Documentation</a>')
